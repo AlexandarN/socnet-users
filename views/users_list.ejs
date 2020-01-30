@@ -11,8 +11,8 @@
                         <table class="table user-list">
                             <thead>
                                 <tr>
+                                    <th class="text-center"><span>User</span></th>
                                 <th class="text-center"><span>ID</span></th>
-                                <th class="text-center"><span>User</span></th>
                                 <th class="text-center"><span>Age</span></th>
                                 <th class="text-center"><span>Gender</span></th>
                                 <th class="text-center"><span>No. of friends</span></th>
@@ -24,11 +24,11 @@
                                     <% users.forEach(user => { %>
                                         <!-- USER DATA -->
                                         <tr>
-                                            <td class="text-center"><%= user.rb %></td>
                                             <td class="text-center">
                                                 <!-- <img src="https://bootdey.com/img/Content/user_1.jpg" alt=""> -->
                                                 <a class="text-center" href="user/<%= user.rb %>" class="user-link"><%= user.firstName %>&nbsp;<%= user.surname %></a>
                                             </td>
+                                            <td class="text-center"><%= user.rb %></td>
                                             <td class="text-center"><%= user.age %></td>
                                             <td class="text-center"><%= user.gender %></td>
                                             <td class="text-center"><%= user.friends.length %></td>

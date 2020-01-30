@@ -19,7 +19,7 @@
 
                 <!-- FRIENDS -->
                 <div class="main-box-body clearfix">
-                    <p style="font-size: 1.2em"><u><%= user.firstName %>'s Friends (<%= user.friends.length %>)</u></p>
+                    <p style="font-size: 1.2em">&nbsp;&nbsp;<u><%= user.firstName %>'s Friends (<%= user.friends.length %>)</u></p>
                     <% if(user.friends.length > 0) { %>
                         <% user.frnds.forEach(frnd => { %>
                             <br>
@@ -28,7 +28,7 @@
                                 <table class="table user-list">
                                     <thead>
                                         <tr>
-                                            <th class="text-center"><span>User</span></th>
+                                            <th class="text-center"><span>NAME</span></th>
                                             <th class="text-center"><span>ID</span></th>
                                             <th class="text-center"><span>Age</span></th>
                                             <th class="text-center"><span>Gender</span></th>
@@ -50,7 +50,7 @@
                                             <td>
                                                 <br>
                                                 <p style="font-size: 1em">
-                                                    Friends of <a href="/user/<%= frnd.rb %>"><%= frnd.firstName %> <%= frnd.surname %></a>
+                                                    &nbsp;&nbsp;&nbsp;Friends of <a href="/user/<%= frnd.rb %>"><%= frnd.firstName %> <%= frnd.surname %></a>
                                                 </p>
                                                 <!-- FRIENDS of a FRIEND -->
                                                 <% frnd.frnds.forEach(frd => { %>
@@ -81,20 +81,18 @@
                 </div>
                 <!-- END OF FRIENDS -->
 
-                <!-- BUTTON -->
-                <a class="btn btn-primary" href="/">Back to Users List</a>
                 <br>
                 <hr>
 
                 <!-- SUGGESTE FRIENDS -->
                 <div class="main-box-body clearfix">
-                    <p style="font-size: 1.2em"><u><%= user.firstName %>'s Suggested Friends (<%= suggested.length %>)</u></p>
+                    <p style="font-size: 1.2em">&nbsp;&nbsp;<u><%= user.firstName %>'s Suggested Friends (<%= suggested.length %>)</u></p>
                     <div class="table-responsive">
                         <table class="table user-list">
                             <thead>
                                 <tr>
+                                    <th class="text-center"><span>Name</span></th>
                                 <th class="text-center"><span>ID</span></th>
-                                <th class="text-center"><span>User</span></th>
                                 <th class="text-center"><span>Age</span></th>
                                 <th class="text-center"><span>Gender</span></th>
                                 <th class="text-center"><span>No. of friends</span></th>
@@ -104,11 +102,11 @@
                                 <% suggested.forEach(user => { %>
                                     <tbody>
                                         <tr>
-                                            <td class="text-center"><%= user.rb %></td>
                                             <td class="text-center">
                                                 <!-- <img src="https://bootdey.com/img/Content/user_1.jpg" alt=""> -->
                                                 <a class="text-center" href="/user/<%= user.rb %>" class="user-link"><%= user.firstName %> <%= user.surname %></a>
                                             </td>
+                                            <td class="text-center"><%= user.rb %></td>
                                             <td class="text-center"><%= user.age %></td>
                                             <td class="text-center"><%= user.gender %></td>
                                             <td class="text-center"><%= user.friends.length %></td>

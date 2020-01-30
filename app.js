@@ -1,6 +1,6 @@
 	// 1) IMPORTING NPM PACKAGEs and NODE MODULEs	
 const express = require('express');  
-// const path = require('path');
+const path = require('path');
 
 	// 1.1)  DEPLOYMENT PACKAGEs
 const helmet = require('helmet');
@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 
 	// 5) MIDDLEWAREs
 	// 5.1) MIDDLEWAREs for setting a static PUBLIC folder  
-app.use(express.static('public'));        
+app.use(express.static(path.resolve('public')));        
 
        
 	// 5.8.2)  SETTING SECURITY HTTP HEADERS
