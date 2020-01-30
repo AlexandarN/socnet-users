@@ -1,0 +1,138 @@
+<%- include('./layouts/head') %>
+
+<br>
+<div class="container bootstrap snippet">
+
+    <!-- BUTTON -->
+    <a class="btn btn-primary" href="/">Back to Users List</a>
+    <hr>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <!-- USER'S NAME -->
+            <p style="font-size: 1.5em; font-weight: bold;"><%= user.firstName %>&nbsp<%= user.surname %><span style="font-weight: normal;">,</span>&nbsp;&nbsp;&nbsp;<span style="font-weight: normal;"><% if(user.age) { %>age: <%= user.age %>,&nbsp;&nbsp;&nbsp;<% } %><%= user.gender %></span></p>
+            <br>
+            <br>
+
+            <div class="main-box no-header clearfix">
+
+                <!-- FRIENDS -->
+                <div class="main-box-body clearfix">
+                    <p style="font-size: 1.2em"><u><%= user.firstName %>'s Friends (<%= user.friends.length %>)</u></p>
+                    <% if(user.friends.length > 0) { %>
+                        <% user.frnds.forEach(frnd => { %>
+                            <br>
+                            <!-- FRIEND -->
+                            <div class="table-responsive">
+                                <table class="table user-list">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"><span>User</span></th>
+                                            <th class="text-center"><span>ID</span></th>
+                                            <th class="text-center"><span>Age</span></th>
+                                            <th class="text-center"><span>Gender</span></th>
+                                            <th class="text-center"><span>No. of friends</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <!-- <img src="https://bootdey.com/img/Content/user_1.jpg" alt=""> -->
+                                                <a class="text-center" href="/user/<%= frnd.rb %>" class="user-link"><%= frnd.firstName %>&nbsp<%= frnd.surname %></a>
+                                            </td>
+                                            <td class="text-center"><%= frnd.rb %></td>
+                                            <td class="text-center"><%= frnd.age %></td>
+                                            <td class="text-center"><%= frnd.gender %></td>
+                                            <td class="text-center"><%= frnd.friends.length %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <br>
+                                                <p style="font-size: 1em">
+                                                    Friends of <a href="/user/<%= frnd.rb %>"><%= frnd.firstName %> <%= frnd.surname %></a>
+                                                </p>
+                                                <!-- FRIENDS of a FRIEND -->
+                                                <% frnd.frnds.forEach(frd => { %>
+                                                    <% if(frd.id !== user.id) { %>
+                                                        <tr>
+                                                            <td class="text-center" style="font-size: 0.9em">
+                                                                <!-- <img src="https://bootdey.com/img/Content/user_1.jpg" alt=""> -->
+                                                                <a class="text-center" href="/user/<%= frd.rb %>" class="user-link"><%= frd.firstName %>&nbsp<%= frd.surname %></a>
+                                                            </td>
+                                                            <td class="text-center" style="font-size: 0.9em"><%= frd.rb %></td>
+                                                            <td class="text-center" style="font-size: 0.9em"><%= frd.age %></td>
+                                                            <td class="text-center" style="font-size: 0.9em"><%= frd.gender %></td>
+                                                            <td class="text-center" style="font-size: 0.9em"><%= frd.friends.length %></td>
+                                                        </tr>
+                                                    <% } %>
+                                                <% }); %>
+                                                <!-- End of FRIENDS of a FRIEND -->
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- End of FRIEND -->
+
+                        <% }); %>
+                    <% } %>  
+                </div>
+                <!-- END OF FRIENDS -->
+
+                <!-- BUTTON -->
+                <a class="btn btn-primary" href="/">Back to Users List</a>
+                <br>
+                <hr>
+
+                <!-- SUGGESTE FRIENDS -->
+                <div class="main-box-body clearfix">
+                    <p style="font-size: 1.2em"><u><%= user.firstName %>'s Suggested Friends (<%= suggested.length %>)</u></p>
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                <th class="text-center"><span>ID</span></th>
+                                <th class="text-center"><span>User</span></th>
+                                <th class="text-center"><span>Age</span></th>
+                                <th class="text-center"><span>Gender</span></th>
+                                <th class="text-center"><span>No. of friends</span></th>
+                                </tr>
+                            </thead>
+                            <% if(suggested.length > 0) { %>
+                                <% suggested.forEach(user => { %>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center"><%= user.rb %></td>
+                                            <td class="text-center">
+                                                <!-- <img src="https://bootdey.com/img/Content/user_1.jpg" alt=""> -->
+                                                <a class="text-center" href="/user/<%= user.rb %>" class="user-link"><%= user.firstName %> <%= user.surname %></a>
+                                            </td>
+                                            <td class="text-center"><%= user.age %></td>
+                                            <td class="text-center"><%= user.gender %></td>
+                                            <td class="text-center"><%= user.friends.length %></td>
+                                        </tr>
+                                    </tbody>
+                                <% }); %>
+                            <% } %> 
+                        </table>
+                    </div>
+                </div>
+                <!-- END OF SUGGESTED FRIENDS -->
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <!-- BUTTON -->
+    <a class="btn btn-primary" href="/">Back to Users List</a>
+    <hr>
+
+</div>
+
+<%- include('./layouts/footer') %>
